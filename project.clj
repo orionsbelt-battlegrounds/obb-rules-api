@@ -5,6 +5,7 @@
   :source-paths ["src"]
   :test-paths ["test"]
 
+  :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [clj-time "0.8.0"]
                  [org.clojure/data.json "0.2.5"]
