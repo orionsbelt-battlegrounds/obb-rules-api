@@ -14,7 +14,8 @@
                  [environ "0.5.0"]
                  [compojure "1.2.0"]]
 
-  :plugins [[lein-ring "0.8.12"]]
+  :plugins [[environ/environ.lein "0.2.1"]
+            [lein-ring "0.8.12"]]
   :main obb-rules-api.routes/app
   :ring {:handler obb-rules-api.routes/app}
   :hooks [environ.leiningen.hooks]
