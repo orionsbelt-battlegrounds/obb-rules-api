@@ -13,5 +13,6 @@
                  [compojure "1.2.0"]]
 
   :plugins [[lein-ring "0.8.12"]]
+  :main obb-rules-api.routes/app
   :ring {:handler obb-rules-api.routes/app}
   :profiles {:dev {:dependencies [[ring-mock "0.1.5"]]}})
