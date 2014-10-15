@@ -13,3 +13,7 @@
 
 (def app
   (handler/site api-routes))
+
+(defn -main [& [port]]
+  (let [port (Integer. (or port (env :port) 5000))]
+    (jetty/run-jetty (site #'api-routes) {:port port :join? false})))
