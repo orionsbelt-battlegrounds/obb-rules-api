@@ -3,6 +3,7 @@
   (:require [compojure.handler :as handler]
             [obb-rules-api.index :as index]
             [clojure.data.json :as json]
+            [ring.adapter.jetty :as jetty]
             [compojure.route :as route]))
 
 (defroutes api-routes
@@ -14,6 +15,6 @@
 (def app
   (handler/site api-routes))
 
-(defn -main [& [port]]
-  (let [port (Integer. (or port (env :port) 5000))]
-    (jetty/run-jetty (site #'api-routes) {:port port :join? false})))
+(defn -main []
+  (let [port (Integer/parseInt (get (System/getenv) "PORT" "5000"))]
+    (jetty/run-jetty api-routes {:port port})))
