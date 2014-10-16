@@ -6,6 +6,7 @@
             [obb-rules-api.unit :as unit]
             [clojure.data.json :as json]
             [ring.adapter.jetty :as jetty]
+            [obb-rules-api.reply :as reply]
             [compojure.route :as route]))
 
 (defroutes api-routes
@@ -14,7 +15,7 @@
   (GET "/units/:unit-name" [unit-name] (unit/handler unit-name))
 
   (route/resources "/")
-  (route/not-found "Not Found"))
+  (route/not-found (reply/not-found)))
 
 (def app
   (handler/site api-routes))

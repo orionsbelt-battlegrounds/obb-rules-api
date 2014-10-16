@@ -15,6 +15,11 @@
   [obj]
   (make-response 200 obj))
 
+(defn not-found
+  "Returns HTTP 404 response"
+  []
+  (make-response 404 {:error "Resource not found"}))
+
 (defn precondition-failed
   "Returns HTTP 412 response"
   [error-description]
