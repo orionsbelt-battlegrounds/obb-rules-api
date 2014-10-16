@@ -9,6 +9,6 @@
       (is (= (:status response) 200))
       (is (= (:body response) "{\"name\":\"obb-rules-api\"}"))))
 
-  (testing "not-found route"
+ (testing "not-found route"
     (let [response (app (request :get "/invalid"))]
       (is (= (:status response) 404)))))
