@@ -4,6 +4,7 @@
             [obb-rules-api.index :as index]
             [obb-rules-api.units :as units]
             [obb-rules-api.unit :as unit]
+            [obb-rules-api.random-game :as random-game]
             [clojure.data.json :as json]
             [ring.adapter.jetty :as jetty]
             [obb-rules-api.reply :as reply]
@@ -13,6 +14,8 @@
   (GET "/" [] (index/handler))
   (GET "/units" [] (units/handler))
   (GET "/units/:unit-name" [unit-name] (unit/handler unit-name))
+
+  (GET "/game/random" [] (random-game/handler))
 
   (route/resources "/")
   (route/not-found (reply/not-found)))
