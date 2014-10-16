@@ -14,3 +14,8 @@
   "Returns HTTP 200 response"
   [obj]
   (make-response 200 obj))
+
+(defn precondition-failed
+  "Returns HTTP 412 response"
+  [error-description]
+  (make-response 412 {:error error-description}))
