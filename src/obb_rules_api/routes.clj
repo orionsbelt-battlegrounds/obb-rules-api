@@ -2,12 +2,14 @@
   (:use compojure.core)
   (:require [compojure.handler :as handler]
             [obb-rules-api.index :as index]
+            [obb-rules-api.units :as units]
             [clojure.data.json :as json]
             [ring.adapter.jetty :as jetty]
             [compojure.route :as route]))
 
 (defroutes api-routes
   (GET "/" [] (index/handler))
+  (GET "/units" [] (units/handler))
 
   (route/resources "/")
   (route/not-found "Not Found"))

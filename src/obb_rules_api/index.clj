@@ -4,4 +4,5 @@
 (defn handler
   "Processes the root endpoint"
   []
-  (reply/ok {:name "obb-rules-api"}))
+  (reply/ok {:name "obb-rules-api"
+             :version (System/getProperty "obb-rules-api.version")}))
