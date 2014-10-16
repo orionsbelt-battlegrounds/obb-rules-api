@@ -21,5 +21,6 @@
   :ring {:handler obb-rules-api.routes/app}
   :hooks [environ.leiningen.hooks]
   :uberjar-name "obb-api-rules-standalone.jar"
-  :profiles {:dev {:dependencies [[ring-mock "0.1.5"]]}
+  :profiles {:dev {:dependencies [[ring-mock "0.1.5"]]
+                   :plugins [[com.jakemccrary/lein-test-refresh "0.5.2"]]}
              :production {:env {:production true}}})
