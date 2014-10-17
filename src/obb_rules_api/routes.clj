@@ -18,12 +18,13 @@
   (GET "/units/:unit-name" [unit-name] (unit/handler unit-name))
 
   (GET "/game/random" [] (random-game/handler))
-  (POST "/game/turn/:player" [player game actions] (turn/handler player game actions))
+  (POST "/game/turn/:player" request (turn/handler request))
 
   (route/resources "/")
   (route/not-found (reply/not-found)))
 
-(def api-routes-middleware (ring-params/wrap-params api-routes))
+#_(def api-routes-middleware (ring-params/wrap-params api-routes))
+(def api-routes-middleware api-routes)
 
 (def app
   (handler/site api-routes-middleware))
