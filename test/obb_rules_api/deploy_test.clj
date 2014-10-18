@@ -14,5 +14,5 @@
                              :height 8
                              :elements {}}
                       :actions [[:deploy 1 :kamikaze [8 8]]]})]
-      (is (game "stash"))
-      (is (= "deploy" (game "state")))))
+    (is (game :stash))
+    (is (= "deploy" (game :state)))))

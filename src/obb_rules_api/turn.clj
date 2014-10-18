@@ -12,6 +12,5 @@
         body (parser/load-game raw-json)
         battle (game/random)
         actions []]
-    (println body)
     #_(turn/process battle player actions)
     (reply/ok (game/random))))
