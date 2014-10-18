@@ -22,3 +22,8 @@
   "Simulates a successful turn play"
   [player params]
   (turn player params 412))
+
+(defn turn-exception
+  "Simulates a turn play with error"
+  [player params]
+  (turn player params 500))

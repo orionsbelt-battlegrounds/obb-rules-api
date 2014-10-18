@@ -40,3 +40,8 @@
                       :actions [[:deploy 1 :kamikaze [8 8]]]})]
     (is (= "ActionFailed" (get-in result [:message])))
     (is (= :deploy (get-in result [:board :state])))))
+
+(deftest test-invalid-request
+  (sim/turn-exception :p2 {}))
+
+

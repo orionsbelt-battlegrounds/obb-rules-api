@@ -23,12 +23,19 @@
   (route/resources "/")
   (route/not-found (reply/not-found)))
 
-#_(def api-routes-middleware (ring-params/wrap-params api-routes))
-(def api-routes-middleware api-routes)
+(defn wrap-exception-handler
+  [handler]
+  (fn [req]
+    (try
+      (handler req)
+      (catch Exception e
+        (reply/exception e)))))
 
 (def app
-  (handler/site api-routes-middleware))
+  (->
+    (handler/site api-routes)
+    (wrap-exception-handler)))
 
 (defn -main []
   (let [port (Integer/parseInt (get (System/getenv) "PORT" "5000"))]
-    (jetty/run-jetty api-routes-middleware {:port port})))
+    (jetty/run-jetty api-routes {:port port})))

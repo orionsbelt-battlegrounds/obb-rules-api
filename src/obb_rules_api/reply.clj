@@ -16,6 +16,11 @@
   [obj]
   (make-response 200 obj))
 
+(defn exception
+  "Returns an exception"
+  [exception]
+  (make-response 500 {:exception (.getMessage exception)}))
+
 (defn not-found
   "Returns HTTP 404 response"
   []
