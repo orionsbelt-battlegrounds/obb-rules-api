@@ -31,5 +31,5 @@
   [result]
   (if (result/succeeded? result)
     (ok result)
-    (precondition-failed result)))
+    (make-response 412 result)))
 

@@ -17,3 +17,8 @@
   "Simulates a successful turn play"
   [player params]
   (turn player params 200))
+
+(defn turn-fail
+  "Simulates a successful turn play"
+  [player params]
+  (turn player params 412))
