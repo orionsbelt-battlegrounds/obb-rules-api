@@ -3,6 +3,8 @@ OBB Rules API [![Build Status](https://travis-ci.org/orionsbelt-battlegrounds/ob
 
 HTTP/JSON api for [OBB Rules](https://github.com/orionsbelt-battlegrounds/obb-rules). This api acts mainly as a json proxy to the main logic. This is a _pure service_, it does not have any side effects, like persistence. You can call it with the game's data repeatedly and easily build tools or bots around it.
 
+[game image](https://camo.githubusercontent.com/f5fc5f992b37d31fb9b4aeb2d0d2241698779606/68747470733a2f2f7261772e6769746875622e636f6d2f6f72696f6e7362656c742d626174746c6567726f756e64732f626174746c652d656e67696e652d61692f6d61737465722f646f632f53616d706c65426f6172642e6a706567)
+
 ## HTTP API
 
 Available at [rules.api.orionsbelt.eu](http://rules.api.orionsbelt.eu).
