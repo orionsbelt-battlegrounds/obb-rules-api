@@ -16,6 +16,18 @@
                       :actions [[:deploy 1 :kamikaze [8 8]]]})]
     (is (= :deploy (get-in result [:board :state])))))
 
+(deftest test-finish-deploy
+  (let [[result response]
+        (sim/turn-ok :p1
+                     {:game {:state "deploy"
+                             :stash {:p1 {:kamikaze 1}
+                                     :p2 {}}
+                             :width 8
+                             :height 8
+                             :elements {}}
+                      :actions [[:deploy 1 :kamikaze [8 8]]]})]
+    (is (not= :deploy (get-in result [:board :state])))))
+
 (deftest test-invalid-deploy
   (let [[result response]
         (sim/turn-fail :p2
