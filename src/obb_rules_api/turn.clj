@@ -1,7 +1,7 @@
 (ns obb-rules-api.turn
   (:require [obb-rules-api.reply :as reply]
             [obb-rules.turn :as turn]
-            [clojure.data.json :as json]
+            [obb-rules-api.parser :as parser]
             [obb-rules.game :as game]))
 
 (defn handler
@@ -9,7 +9,7 @@
   [raw]
   (let [player (keyword (raw :params))
         raw-json (slurp (:body raw))
-        body (json/read-str raw-json :key-fn keyword)
+        body (parser/load-game raw-json)
         battle (game/random)
         actions []]
     (println body)
