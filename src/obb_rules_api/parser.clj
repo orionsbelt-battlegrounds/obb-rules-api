@@ -6,10 +6,18 @@
   [game]
   (json/write-str game))
 
+(defn- parse-specific-keys
+  "Parses specific keys to expected format"
+  [key value]
+  (cond
+    (= key :state) (keyword value)
+    :else value))
+
 (defn load-game
   "Loads a game from JSON"
   [raw-game]
-  (json/read-str raw-game :key-fn keyword))
+  (json/read-str raw-game :key-fn keyword
+                          :value-fn parse-specific-keys))
 
 (defn dump-actions
   "Serializes actions as json"

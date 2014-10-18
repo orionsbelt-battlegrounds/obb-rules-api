@@ -7,10 +7,10 @@
 (defn handler
   "Processes given actions to a game"
   [raw]
-  (let [player (keyword (raw :params))
+  (let [player (keyword ((raw :params) :player))
         raw-json (slurp (:body raw))
         data (parser/load-game raw-json)
         battle (data :game)
-        actions (data :actions)]
-    (apply turn/process battle player actions)
-    (reply/ok (game/random))))
+        actions (data :actions)
+        result (apply turn/process battle player actions)]
+    (reply/result result)))

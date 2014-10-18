@@ -5,7 +5,7 @@
         ring.mock.request))
 
 (deftest test-deploy
-  (let [[game response]
+  (let [[result response]
         (sim/turn-ok :p1
                      {:game {:state "deploy"
                              :stash {:p1 {:kamikaze 1}
@@ -14,5 +14,4 @@
                              :height 8
                              :elements {}}
                       :actions [[:deploy 1 :kamikaze [8 8]]]})]
-    (is (game :stash))
-    (is (= "deploy" (game :state)))))
+    (is (= :deploy (get-in result [:board :state])))))

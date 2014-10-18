@@ -8,7 +8,7 @@
   "Simulates a turn processing call"
   [player params expected-status]
   (let [game (parser/dump-game params)
-        response (app (request :post (str "/game/turn/" player) game))
+        response (app (request :post (str "/game/turn/" (name player)) game))
         response-game (parser/load-game (:body response))]
     (is (= expected-status (response :status)))
     [response-game response]))

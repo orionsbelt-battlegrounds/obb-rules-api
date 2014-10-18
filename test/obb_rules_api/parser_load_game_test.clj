@@ -5,7 +5,7 @@
         ring.mock.request))
 
 (deftest load-deploy-game
-  (let [game {:state "deploy"
+  (let [game {:state :deploy
               :stash {:p1 {:kamikaze 1}
                       :p2 {:kamikaze 1}}
               :width 8
@@ -13,5 +13,4 @@
               :elements {}}
         data (parser/dump-game game)
         loaded-game (parser/load-game data)]
-    (is (= game loaded-game)))
-  )
+    (is (= game loaded-game))))

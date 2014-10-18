@@ -1,6 +1,7 @@
 (ns obb-rules-api.reply
   (:require [compojure.handler :as handler]
             [clojure.data.json :as json]
+            [obb-rules.result :as result]
             [compojure.route :as route]))
 
 (defn- make-response
@@ -24,3 +25,11 @@
   "Returns HTTP 412 response"
   [error-description]
   (make-response 412 {:error error-description}))
+
+(defn result
+  "Returns based on the given result"
+  [result]
+  (if (result/succeeded? result)
+    (ok result)
+    (precondition-failed result)))
+
