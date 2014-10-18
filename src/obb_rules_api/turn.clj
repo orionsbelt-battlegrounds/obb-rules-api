@@ -9,8 +9,8 @@
   [raw]
   (let [player (keyword (raw :params))
         raw-json (slurp (:body raw))
-        body (parser/load-game raw-json)
-        battle (game/random)
-        actions []]
-    #_(turn/process battle player actions)
+        data (parser/load-game raw-json)
+        battle (data :game)
+        actions (data :actions)]
+    (apply turn/process battle player actions)
     (reply/ok (game/random))))

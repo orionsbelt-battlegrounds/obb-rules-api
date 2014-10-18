@@ -11,3 +11,8 @@
   [raw-game]
   (json/read-str raw-game :key-fn keyword))
 
+(defn dump-actions
+  "Serializes actions as json"
+  [actions]
+  (json/write-str actions))
+
