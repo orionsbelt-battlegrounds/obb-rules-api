@@ -2,6 +2,7 @@
   (:require [compojure.handler :as handler]
             [clojure.data.json :as json]
             [obb-rules.result :as result]
+            [obb-rules-api.parser :as parser]
             [compojure.route :as route]))
 
 (defn- make-response
@@ -9,7 +10,7 @@
   [status-code obj]
   {:status status-code
    :headers {"Content-Type" "text/json; charset=utf-8"}
-   :body (json/write-str obj)})
+   :body (parser/dump obj)})
 
 (defn ok
   "Returns HTTP 200 response"

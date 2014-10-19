@@ -1,5 +1,6 @@
 (ns obb-rules-api.deploy-test
-  (:require [obb-rules-api.simulator-test :as sim])
+  (:require [obb-rules-api.simulator-test :as sim]
+            [obb-rules-api.parser :as parser])
   (:use clojure.test
         obb-rules-api.routes
         ring.mock.request))
