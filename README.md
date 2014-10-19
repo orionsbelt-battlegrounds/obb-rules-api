@@ -23,7 +23,9 @@ You can verify the api's version and several _constants_ used on the game's logi
    "rules":{  
       "version":"1.0.0-SNAPSHOT",
       "max-action-points":6,
-      "min-move-percentage":0.2
+      "min-move-percentage":0.2,
+      "default-board-width":8,
+      "default-board-height":8
    }
 }
 ```
