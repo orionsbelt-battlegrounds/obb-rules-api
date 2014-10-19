@@ -17,7 +17,10 @@
                                         [1 4] {:player :p2
                                                :unit (unit/fetch :rain)
                                                :quantity 1
+                                               :coordinate [1 4]
                                                :direction :east}}}
-                      :actions [[:move [1 1] [1 2] 1]]})]
+                      :actions [[:move [1 1] [1 2] 1]
+                                [:move [1 2] [1 3] 1]
+                                [:attack [1 3] [1 4]]]})]
     (is (not= :deploy (get-in result [:board :state])))))
 

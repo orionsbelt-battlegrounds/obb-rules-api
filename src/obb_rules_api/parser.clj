@@ -35,6 +35,8 @@
   [key value]
   (cond
     (= key :state) (keyword value)
+    (= key :player) (keyword value)
+    (= key :direction) (keyword value)
     (= key :unit) (unit/fetch value)
     (= key :action-results) nil
     :else value))
@@ -42,9 +44,9 @@
 (defn- custom-keyword
   "Transforms strings in keywords"
   [key]
-  (cond
-    (string? key) (keyword key)
-    :else key))
+  (if-let [raw (re-matches #"\[(\d+) (\d+)\]" key)]
+    (into [] (map read-string (rest raw)))
+    (keyword key)))
 
 (defn load-game
   "Loads a game from JSON"
