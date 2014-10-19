@@ -11,6 +11,8 @@
         response (app (request :post (str "/game/turn/" (name player)) game))
         response-game (parser/load-game (:body response))]
     (is (= expected-status (response :status)))
+    (when (not= expected-status (response :status))
+      (println response))
     [response-game response]))
 
 (defn turn-ok

@@ -39,10 +39,17 @@
     (= key :action-results) nil
     :else value))
 
+(defn- custom-keyword
+  "Transforms strings in keywords"
+  [key]
+  (cond
+    (string? key) (keyword key)
+    :else key))
+
 (defn load-game
   "Loads a game from JSON"
   [raw-game]
-  (json/read-str raw-game :key-fn keyword
+  (json/read-str raw-game :key-fn custom-keyword
                           :value-fn parse-specific-keys))
 
 (defn dump-actions

@@ -13,4 +13,5 @@
         battle (data :game)
         actions (data :actions)
         result (apply turn/process battle player actions)]
+    (println result)
     (reply/result result)))
