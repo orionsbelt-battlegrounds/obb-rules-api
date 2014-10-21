@@ -23,7 +23,9 @@ You can verify the api's version and several _constants_ used on the game's logi
    "rules":{  
       "version":"1.0.0-SNAPSHOT",
       "max-action-points":6,
-      "min-move-percentage":0.2
+      "min-move-percentage":0.2,
+      "default-board-width":8,
+      "default-board-height":8
    }
 }
 ```
@@ -63,6 +65,90 @@ It will create a game in the _deploy_ state, where each player has the same unit
    "width":8,
    "height":8,
    "elements":{}
+}
+```
+
+### `POST /game/turn/:player` processes a turn
+
+It will request a process turn by the given `:player` (`p1` or `p2`). The body will be a JSON message consisting of the current state of the game, and a collection of actions to apply to that game. The result will yield the next game state if successfull, or a list of errors.
+
+POST data:
+
+```javascript
+{
+  "game": {
+    "state": "p1",
+    "elements": {
+      "[1 1]": {
+        "player": "p1",
+        "unit": "kamikaze",
+        "quantity": 1,
+        "coordinate": [1,1],
+        "direction": "south"
+      },
+      "[1 4]": {
+        "player": "p2",
+        "unit": "rain",
+        "quantity": 1,
+        "coordinate": [1,4],
+        "direction": "east"
+      }
+    }
+  },
+  "actions": [
+    ["move", [1,1], [1,2], 1],
+    ["move", [1,2], [1,3], 1],
+    ["attack", [1,3], [1,4]]
+  ]
+}
+```
+
+Sample response:
+
+```javascript
+{
+  "success": true,
+  "board": {
+    "action-results": [
+      [
+        ["move", [1,1], [1,2], 1],
+        {
+          "success": true,
+          "cost": 1,
+          "message": "OK"
+        }
+      ],
+      [
+        ["move", [1,2], [1,3], 1],
+        {
+          "success": true,
+          "cost": 1,
+          "message": "OK"
+        }
+      ],
+      [
+        ["attack", [1,3], [1,4]],
+        {
+          "success": true,
+          "cost": 1,
+          "message": "OK"
+        }
+      ]
+    ],
+    "state": "final",
+    "elements": {
+      "[1 3]": {
+        "frozen": true,
+        "player": "p1",
+        "unit": "kamikaze",
+        "quantity": 1,
+        "coordinate": [1,3],
+        "direction": "south"
+      }
+    }
+  },
+  "cost": 3,
+  "message": "TurnOK"
 }
 ```
 
