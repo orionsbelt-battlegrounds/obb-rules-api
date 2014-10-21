@@ -72,6 +72,15 @@ It will create a game in the _deploy_ state, where each player has the same unit
 
 It will request a process turn by the given `:player` (`p1` or `p2`). The body will be a JSON message consisting of the current state of the game, and a collection of actions to apply to that game. The result will yield the next game state if successfull, or a list of errors.
 
+Expected data:
+
+name | default | description
+--- | --- | --- | ---
+**game** | - | the current board
+**actions** | - | the list of actions to process on this turn
+**action-focus** | p1 | the received actions were performed with this focus (p1 or p2)
+**p2-focused-board** | false | if the server should also return a view of the board from p2
+
 POST data:
 
 ```javascript
@@ -95,11 +104,13 @@ POST data:
       }
     }
   },
+  "action-focus":"p1",
   "actions": [
     ["move", [1,1], [1,2], 1],
     ["move", [1,2], [1,3], 1],
     ["attack", [1,3], [1,4]]
-  ]
+  ],
+  "p2-focused-board":false
 }
 ```
 
