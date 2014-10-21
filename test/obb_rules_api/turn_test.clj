@@ -3,6 +3,7 @@
             [obb-rules.unit :as unit]
             [obb-rules-api.parser :as parser])
   (:use clojure.test
+        obb-rules.result
         obb-rules-api.routes
         ring.mock.request))
 
@@ -50,7 +51,9 @@
       (let [direct-board (assoc board :actions direct-actions)
             [direct-result response] (sim/turn-ok :p2 direct-board)
             focus-board (-> (assoc board :actions focus-actions)
-                            (assoc :action-focus :p2))
+                            (assoc :action-focus :p2)
+                            (assoc :p2-focused-board true))
             [focus-result response] (sim/turn-ok :p2 focus-board)]
-        (is (= direct-result focus-result))
+        (is (focus-result :p2-focused-board))
+        (is (= (result-board direct-result) (result-board focus-result)))
       ))))
