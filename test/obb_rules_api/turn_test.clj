@@ -40,8 +40,17 @@
                         [:move [3 3] [2 2] 1]
                         [:move [2 2] [2 1] 1]
                         [:rotate [2 1] :west]
-                        [:attack [2 1] [1 1]]]]
+                        [:attack [2 1] [1 1]]]
+        focus-actions  [[:move [5 5] [6 6] 1]
+                        [:move [6 6] [7 7] 1]
+                        [:move [7 7] [7 8] 1]
+                        [:rotate [7 8] :east]
+                        [:attack [7 8] [8 8]]]]
     (testing "regular :p2"
       (let [direct-board (assoc board :actions direct-actions)
-            [direct result response] (sim/turn-ok :p2 direct-board)]
+            [direct-result response] (sim/turn-ok :p2 direct-board)
+            focus-board (-> (assoc board :actions focus-actions)
+                            (assoc :action-focus :p2))
+            [focus-result response] (sim/turn-ok :p2 focus-board)]
+        (is (= direct-result focus-result))
       ))))
