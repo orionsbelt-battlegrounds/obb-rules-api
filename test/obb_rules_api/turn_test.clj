@@ -55,5 +55,4 @@
                             (assoc :p2-focused-board true))
             [focus-result response] (sim/turn-ok :p2 focus-board)]
         (is (focus-result :p2-focused-board))
-        (is (= (result-board direct-result) (result-board focus-result)))
-      ))))
+        (is (= (result-board direct-result) (result-board focus-result)))))))
