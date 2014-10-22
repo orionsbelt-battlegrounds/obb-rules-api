@@ -28,7 +28,6 @@
 (defn handler
   "Processes given actions to a game"
   [raw]
-  (println raw)
   (let [player (keyword ((raw :params) :player))
         raw-json (get-raw-json raw)
         data (parser/load-game raw-json)

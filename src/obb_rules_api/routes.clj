@@ -40,4 +40,4 @@
 
 (defn -main []
   (let [port (Integer/parseInt (get (System/getenv) "PORT" "5000"))]
-    (jetty/run-jetty api-routes {:port port})))
+    (jetty/run-jetty app {:port port})))
