@@ -18,6 +18,7 @@
   (GET "/units/:unit-name" [unit-name] (unit/handler unit-name))
 
   (GET "/game/random" [] (random-game/handler))
+  (GET "/game/turn/:player" request (turn/handler request))
   (POST "/game/turn/:player" request (turn/handler request))
 
   (route/resources "/")
