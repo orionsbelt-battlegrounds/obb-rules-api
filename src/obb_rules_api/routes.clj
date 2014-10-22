@@ -34,7 +34,7 @@
 
 (def app
   (->
-    (handler/site api-routes)
+    (handler/api api-routes)
     (wrap-exception-handler)))
 
 (defn -main []
