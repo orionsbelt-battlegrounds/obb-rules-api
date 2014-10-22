@@ -21,7 +21,6 @@
 (defn get-raw-json
   "Retrieves the raw json from the given request"
   [raw]
-  (println raw)
   (if-let [body (get-in raw [:params :context])]
     body
     (slurp (:body raw))))
