@@ -68,9 +68,11 @@ It will create a game in the _deploy_ state, where each player has the same unit
 }
 ```
 
-### `POST /game/turn/:player` processes a turn
+### `GET /game/turn/:player?context=:data` processes a turn
 
-It will request a process turn by the given `:player` (`p1` or `p2`). The body will be a JSON message consisting of the current state of the game, and a collection of actions to apply to that game. The result will yield the next game state if successfull, or a list of errors.
+It will request a process turn by the given `:player` (`p1` or `p2`). The data will be a JSON message consisting of the current state of the game, and a collection of actions to apply to that game. The result will yield the next game state if successfull, or a list of errors.
+
+`:data` is JSON payload, that can be given via a GET request in the query string via `context` (url encoded) or in a POST request's body.
 
 Expected data:
 
@@ -81,7 +83,11 @@ name | default | description
 **action-focus** | p1 | the received actions were performed with this focus (p1 or p2)
 **p2-focused-board** | false | if the server should also return a view of the board from p2
 
-POST data:
+```
+> curl http://rules.api.orionsbelt.eu/game/turn/p1?context=%7B%22game%22%3A%7B%22state%22%3A%22p1%22,%22elements%22%3A%7B%22%5B1%201%5D%22%3A%7B%22player%22%3A%22p1%22,%22unit%22%3A%22kamikaze%22,%22quantity%22%3A1,%22coordinate%22%3A%5B1,1%5D,%22direction%22%3A%22south%22%7D,%22%5B1%204%5D%22%3A%7B%22player%22%3A%22p2%22,%22unit%22%3A%22rain%22,%22quantity%22%3A1,%22coordinate%22%3A%5B1,4%5D,%22direction%22%3A%22east%22%7D%7D%7D,%22actions%22%3A%5B%5B%22move%22,%5B1,1%5D,%5B1,2%5D,1%5D,%5B%22move%22,%5B1,2%5D,%5B1,3%5D,1%5D,%5B%22attack%22,%5B1,3%5D,%5B1,4%5D%5D%5D%7D
+```
+
+POST example:
 
 ```javascript
 {
@@ -114,7 +120,7 @@ POST data:
 }
 ```
 
-Sample response:
+Example response:
 
 ```javascript
 {
