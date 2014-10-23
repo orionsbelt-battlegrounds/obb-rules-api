@@ -1,1 +1,1 @@
-git push heroku master
+lein test && git push heroku master
