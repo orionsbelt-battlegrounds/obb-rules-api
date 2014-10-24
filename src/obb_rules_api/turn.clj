@@ -18,19 +18,11 @@
     (assoc result :p2-focused-board (translator/board :p2 (result/result-board result)))
     result))
 
-(defn get-raw-json
-  "Retrieves the raw json from the given request"
-  [raw]
-  (if-let [body (get-in raw [:params :context])]
-    body
-    (slurp (:body raw))))
-
 (defn handler
   "Processes given actions to a game"
   [raw]
-  (let [player (keyword ((raw :params) :player))
-        raw-json (get-raw-json raw)
-        data (parser/load-game raw-json)
+  (let [player (parser/build-player raw)
+        data (parser/build-data raw)
         battle (data :game)
         action-focus (or (data :action-focus) :p1)
         actions (resolve-focus action-focus (data :actions))
