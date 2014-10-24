@@ -169,6 +169,48 @@ Example response:
 }
 ```
 
+### `GET /game/focus/:player?context=:data` view the board as `player`
+
+Get a current board/game in another player focus. For example, if by default player A is at the _bottom_,
+this request will show the board as if player A was at the _top_. The input is the same as in `/game/turn`.
+
+```
+http://rules.api.orionsbelt.eu/game/focus/p2?context={%22game%22:{%22state%22:%22p1%22,%22elements%22:{%22[1%201]%22:{%22player%22:%22p1%22,%22unit%22:%22kamikaze%22,%22quantity%22:1,%22coordinate%22:[1,1],%22direction%22:%22south%22},%22[1%204]%22:{%22player%22:%22p2%22,%22unit%22:%22rain%22,%22quantity%22:1,%22coordinate%22:[1,4],%22direction%22:%22east%22}}},%22actions%22:[[%22move%22,[1,1],[1,2],1],[%22move%22,[1,2],[1,3],1],[%22attack%22,[1,3],[1,4]]]}
+```
+
+```
+{
+  "success": true,
+  "board": {
+    "state": "p1",
+    "elements": {
+      "[8 8]": {
+        "player": "p1",
+        "unit": "kamikaze",
+        "quantity": 1,
+        "coordinate": [
+          8,
+          8
+        ],
+        "direction": "north"
+      },
+      "[8 5]": {
+        "player": "p2",
+        "unit": "rain",
+        "quantity": 1,
+        "coordinate": [
+          8,
+          5
+        ],
+        "direction": "west"
+      }
+    }
+  },
+  "cost": "OK",
+  "message": "OK"
+}
+```
+
 ### `GET /units/:unit` fetch the info of the given `:unit`
 
 You can request the unit given it's `name` or `code`.
