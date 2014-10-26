@@ -1,4 +1,5 @@
 (ns obb-rules-api.parser
+  "Utilities for parsing/building requests"
   (:require [clojure.data.json :as json]
             [obb-rules.unit :as unit]))
 
@@ -59,3 +60,20 @@
   [actions]
   (json/write-str actions))
 
+(defn get-game-json
+  "Retrieves the raw json from the given request"
+  [raw]
+  (if-let [body (get-in raw [:params :context])]
+    body
+    (slurp (:body raw))))
+
+(defn build-data
+  "Loads the data from the raw request"
+  [raw]
+  (-> (get-game-json raw)
+      (load-game)))
+
+(defn build-player
+  "Loads the player from the raw request"
+  [raw]
+  (keyword ((raw :params) :player)))

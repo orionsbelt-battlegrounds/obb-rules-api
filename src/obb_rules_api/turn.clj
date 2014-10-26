@@ -21,9 +21,8 @@
 (defn handler
   "Processes given actions to a game"
   [raw]
-  (let [player (keyword ((raw :params) :player))
-        raw-json (slurp (:body raw))
-        data (parser/load-game raw-json)
+  (let [player (parser/build-player raw)
+        data (parser/build-data raw)
         battle (data :game)
         action-focus (or (data :action-focus) :p1)
         actions (resolve-focus action-focus (data :actions))
