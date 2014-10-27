@@ -1,4 +1,4 @@
-(defproject obb-rules-api "1.0.0"
+(defproject obb-rules-api "1.1.0"
   :description "JSON/REST API for obb-rules"
   :url "https://github.com/orionsbelt-battlegrounds/obb-rules-api"
 
