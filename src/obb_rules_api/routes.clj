@@ -28,6 +28,7 @@
   (POST "/game/focus/:player" request (focus/handler request))
 
   (GET "/ranking/default" request (ranking/default-handler request))
+  (GET "/ranking/calculate" request (ranking/calculate-handler request))
 
   (route/resources "/")
   (route/not-found (reply/not-found)))
