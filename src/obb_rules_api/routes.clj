@@ -7,6 +7,7 @@
             [obb-rules-api.unit :as unit]
             [obb-rules-api.random-game :as random-game]
             [obb-rules-api.turn :as turn]
+            [obb-rules-api.ranking :as ranking]
             [clojure.data.json :as json]
             [ring.adapter.jetty :as jetty]
             [obb-rules-api.reply :as reply]
@@ -25,6 +26,8 @@
 
   (GET "/game/focus/:player" request (focus/handler request))
   (POST "/game/focus/:player" request (focus/handler request))
+
+  (GET "/ranking/default" request (ranking/default-handler request))
 
   (route/resources "/")
   (route/not-found (reply/not-found)))

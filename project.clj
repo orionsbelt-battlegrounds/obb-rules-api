@@ -16,6 +16,7 @@
                  [ring/ring-jetty-adapter "1.2.2"]
                  [environ "0.5.0"]
                  [obb-rules "1.0.0"]
+                 [obb-ranking "1.0.0-SNAPSHOT"]
                  [compojure "1.2.0"]]
 
   :plugins [[environ/environ.lein "0.2.1"]
