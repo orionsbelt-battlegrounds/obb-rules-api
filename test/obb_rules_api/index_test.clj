@@ -9,9 +9,8 @@
     (let [response (app (request :get "/"))]
       (is (= (:status response) 200))
       (let [result (json/read-str (:body response))]
-        (is (= "obb-rules-api" (result "name")))
-        (is (= "1.1.0" (result "version"))))))
+        (is (= "obb-rules-api" (result "name")))))))
 
  (testing "not-found route"
     (let [response (app (request :get "/invalid"))]
-      (is (= (:status response) 404)))))
+      (is (= (:status response) 404))))
