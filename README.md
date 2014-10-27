@@ -211,6 +211,21 @@ http://rules.api.orionsbelt.eu/game/focus/p2?context={%22game%22:{%22state%22:%2
 }
 ```
 
+### `GET /ranking/default` shows the default ranking
+
+Shows the default ranking information for new players
+
+```
+> curl http://rules.api.orionsbelt.eu/ranking/default
+```
+```javascript
+{  
+   "rating":1500.0,
+   "rd":350.0,
+   "volatility":0.06
+}
+```
+
 ### `GET /units/:unit` fetch the info of the given `:unit`
 
 You can request the unit given it's `name` or `code`.
