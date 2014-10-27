@@ -211,21 +211,6 @@ http://rules.api.orionsbelt.eu/game/focus/p2?context={%22game%22:{%22state%22:%2
 }
 ```
 
-### `GET /ranking/default` shows the default ranking
-
-Shows the default ranking information for new players
-
-```
-> curl http://rules.api.orionsbelt.eu/ranking/default
-```
-```javascript
-{  
-   "rating":1500.0,
-   "rd":350.0,
-   "volatility":0.06
-}
-```
-
 ### `GET /units/:unit` fetch the info of the given `:unit`
 
 You can request the unit given it's `name` or `code`.
@@ -271,4 +256,41 @@ You can request the unit given it's `name` or `code`.
    },
    // ... and so on
 ]
+```
+
+### `GET /ranking/default` shows the default ranking
+
+Shows the default ranking information for new players
+
+```
+> curl http://rules.api.orionsbelt.eu/ranking/default
+```
+```javascript
+{  
+   "rating":1500.0,
+   "rd":350.0,
+   "volatility":0.06
+}
+```
+
+### `GET /ranking/calculate?winner=:d1&other=:d2` calculate new rankings
+
+Calculates the new ranking given the winner's current ranking and the other player's ranking.
+
+```
+http://rules.api.orionsbelt.eu/ranking/calculate?winner=%7B%22rating%22%3A1500.0%2C%22rd%22%3A350.0%2C%22volatility%22%3A0.06%7D&other=%7B%22rating%22%3A1500.0%2C%22rd%22%3A350.0%2C%22volatility%22%3A0.06%7D
+```
+```javascript
+{  
+   "winner":{  
+      "rating":1662.3108925690603,
+      "rd":290.31896252204893,
+      "volatility":0.05999926959652241
+   },
+   "other":{  
+      "rating":1337.6891074309397,
+      "rd":290.31896252204893,
+      "volatility":0.05999926959652241
+   }
+}
 ```
