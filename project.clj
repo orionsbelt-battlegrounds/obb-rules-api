@@ -1,4 +1,4 @@
-(defproject obb-rules-api "1.1.0-SNAPSHOT"
+(defproject obb-rules-api "1.1.0"
   :description "JSON/REST API for obb-rules"
   :url "https://github.com/orionsbelt-battlegrounds/obb-rules-api"
 
@@ -16,7 +16,7 @@
                  [ring/ring-jetty-adapter "1.2.2"]
                  [environ "0.5.0"]
                  [obb-rules "1.0.0"]
-                 [obb-ranking "1.0.0-SNAPSHOT"]
+                 [obb-ranking "1.0.0"]
                  [compojure "1.2.0"]]
 
   :plugins [[environ/environ.lein "0.2.1"]
