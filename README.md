@@ -1,5 +1,6 @@
-OBB Rules API [![Build Status](https://travis-ci.org/orionsbelt-battlegrounds/obb-rules-api.svg)](https://travis-ci.org/orionsbelt-battlegrounds/obb-rules-api) [![Dependency Status](https://www.versioneye.com/user/projects/545250c530a8fe529600003e/badge.svg?style=flat)](https://www.versioneye.com/user/projects/545250c530a8fe529600003e)  ![Uptime](https://www.statuscake.com/App/button/index.php?Track=gXC2Qbo9AK&Days=30&Design=5)
+OBB Rules API
 =============
+[![Build Status](https://travis-ci.org/orionsbelt-battlegrounds/obb-rules-api.svg)](https://travis-ci.org/orionsbelt-battlegrounds/obb-rules-api) [![Dependency Status](https://www.versioneye.com/user/projects/545250c530a8fe529600003e/badge.svg?style=flat)](https://www.versioneye.com/user/projects/545250c530a8fe529600003e)  ![Uptime](https://www.statuscake.com/App/button/index.php?Track=gXC2Qbo9AK&Days=30&Design=5)
 
 HTTP/JSON api for [OBB Rules](https://github.com/orionsbelt-battlegrounds/obb-rules). This api acts mainly as a json proxy to the main logic. This is a _pure service_, it does not have any side effects, like persistence. You can call it with the game's data repeatedly and easily build tools or bots around it.
 
