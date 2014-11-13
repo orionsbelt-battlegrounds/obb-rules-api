@@ -15,7 +15,7 @@
                  [javax.servlet/servlet-api "2.5"]
                  [ring/ring-jetty-adapter "1.3.1"]
                  [environ "1.0.0"]
-                 [obb-rules "1.2.2"]
+                 [obb-rules "1.3.2"]
                  [obb-ranking "1.0.0"]
                  [compojure "1.2.1"]]
 
