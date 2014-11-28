@@ -12,7 +12,6 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [clj-time "0.8.0"]
                  [org.clojure/data.json "0.2.5"]
-                 ;[javax.servlet/servlet-api "2.5"]
                  [ring/ring-jetty-adapter "1.3.2"]
                  [environ "1.0.0"]
                  [obb-rules "1.3.3"]
