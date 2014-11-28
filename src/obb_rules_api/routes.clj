@@ -10,6 +10,7 @@
             [obb-rules-api.ranking :as ranking]
             [clojure.data.json :as json]
             [ring.adapter.jetty :as jetty]
+            [ring.middleware.cors :as cors]
             [obb-rules-api.reply :as reply]
             [ring.middleware.params :as ring-params]
             [compojure.route :as route]))
@@ -42,9 +43,18 @@
         #_(clojure.stacktrace/print-stack-trace e 10)
         (reply/exception e)))))
 
+(defn setup-cors
+  "Setup cors"
+  [handler]
+  (cors/wrap-cors handler :access-control-allow-origin [#"http://(.+\.)?orionsbelt.eu"
+                                                        #"http://localhost"
+                                                        #"http://orionsbelt-battlegrounds.github.io"]
+                          :access-control-allow-methods [:get :put :post :delete]))
+
 (def app
   (->
     (handler/api api-routes)
+    (setup-cors)
     (wrap-exception-handler)))
 
 (defn -main []
