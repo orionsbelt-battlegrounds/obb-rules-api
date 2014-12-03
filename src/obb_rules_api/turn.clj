@@ -23,7 +23,7 @@
   [raw]
   (let [player (parser/build-player raw)
         data (parser/build-data raw)
-        battle (data :game)
+        battle (or (data :game) (data :battle))
         action-focus (or (data :action-focus) :p1)
         actions (resolve-focus action-focus (data :actions))
         result (-> (apply turn/process battle player actions)
