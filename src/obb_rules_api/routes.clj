@@ -46,9 +46,9 @@
 (defn setup-cors
   "Setup cors"
   [handler]
-  (cors/wrap-cors handler :access-control-allow-origin [#"http://(.+\.)?orionsbelt.eu"
-                                                        #"http://localhost:(.+)"
-                                                        #"http://orionsbelt-battlegrounds.github.io"]
+  (cors/wrap-cors handler :access-control-allow-origin [#"^http://(.+\.)?orionsbelt.eu(.*)"
+                                                        #"^http://localhost(.*)"
+                                                        #"^http://orionsbelt-battlegrounds.github.io(.*)"]
                           :access-control-allow-methods [:get :put :post :delete]))
 
 (def app
