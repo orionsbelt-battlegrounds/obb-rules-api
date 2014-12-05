@@ -17,7 +17,7 @@
                  [environ "1.0.0"]
                  [obb-rules "1.3.3"]
                  [obb-ranking "1.0.0"]
-                 [compojure "1.2.1"]]
+                 [compojure "1.2.2"]]
 
   :plugins [[environ/environ.lein "0.2.1"]
             [lein-ring "0.8.12"]]
