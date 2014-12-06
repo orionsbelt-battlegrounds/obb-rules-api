@@ -9,7 +9,7 @@
   "Builds a response"
   [status-code obj]
   {:status status-code
-   :headers {"Content-Type" "text/json; charset=utf-8"}
+   :headers {"Content-Type" "application/json; charset=utf-8"}
    :body (parser/dump obj)})
 
 (defn ok
