@@ -18,12 +18,20 @@
     (assoc result :p2-focused-board (translator/board :p2 (result/result-board result)))
     result))
 
+(defn- fetch-board
+  "Gets the board element form the given data"
+  [data]
+  (or
+    (data :game)
+    (data :board)
+    (data :battle)))
+
 (defn handler
   "Processes given actions to a game"
   [raw]
   (let [player (parser/build-player raw)
         data (parser/build-data raw)
-        battle (or (data :game) (data :battle))
+        battle (fetch-board data)
         action-focus (or (data :action-focus) :p1)
         actions (resolve-focus action-focus (data :actions))
         result (-> (apply turn/process battle player actions)

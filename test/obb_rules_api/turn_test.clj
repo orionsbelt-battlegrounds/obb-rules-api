@@ -57,6 +57,10 @@
         (is (focus-result :p2-focused-board))
         (is (= (result-board direct-result) (result-board focus-result)))))))
 
-(deftest test-specific-load-scenario
+(deftest test-specific-load-scenario-battle
   (let [response (app (request :get "/game/turn/p1?context=%7B%22viewed-by%22%3A%7B%22username%22%3A%22donbonifacio%22%2C%22player-code%22%3A%22p1%22%7D%2C%22battle%22%3A%7B%22state%22%3A%22deploy%22%2C%22stash%22%3A%7B%22p2%22%3A%7B%7D%2C%22p1%22%3A%7B%22toxic%22%3A100%2C%22heavy-seeker%22%3A25%2C%22pretorian%22%3A50%2C%22raptor%22%3A100%2C%22nova%22%3A25%2C%22kamikaze%22%3A50%2C%22worm%22%3A50%2C%22crusader%22%3A25%7D%7D%2C%22width%22%3A8%2C%22height%22%3A8%2C%22terrain%22%3A%22ice%22%2C%22elements%22%3A%7B%7D%7D%2C%22_id%22%3A%225476430de4b07cfc887cc932%22%2C%22board%22%3A%7B%22state%22%3A%22deploy%22%2C%22stash%22%3A%7B%22p2%22%3A%7B%22toxic%22%3A100%2C%22heavy-seeker%22%3A25%2C%22pretorian%22%3A50%2C%22raptor%22%3A100%2C%22nova%22%3A25%2C%22kamikaze%22%3A50%2C%22worm%22%3A50%2C%22crusader%22%3A25%7D%2C%22p1%22%3A%7B%22toxic%22%3A100%2C%22heavy-seeker%22%3A25%2C%22pretorian%22%3A50%2C%22raptor%22%3A100%2C%22nova%22%3A25%2C%22kamikaze%22%3A50%2C%22worm%22%3A50%2C%22crusader%22%3A25%7D%7D%2C%22width%22%3A8%2C%22height%22%3A8%2C%22terrain%22%3A%22ice%22%2C%22elements%22%3A%7B%7D%7D%2C%22p2%22%3A%7B%22name%22%3A%22Pyro%22%7D%2C%22p1%22%3A%7B%22name%22%3A%22donbonifacio%22%7D%2C%22actions%22%3A%5B%5D%7D"))]
+    (is (= 200 (response :status)))))
+
+(deftest test-specific-load-scenario-board
+  (let [response (app (request :get "/game/turn/p1?context=%7B%22viewed-by%22%3A%7B%22username%22%3A%22donbonifacio%22%2C%22player-code%22%3A%22p1%22%7D%2C%22_id%22%3A%22548cb171e4b0a7de4160621b%22%2C%22board%22%3A%7B%22state%22%3A%22deploy%22%2C%22stash%22%3A%7B%22p2%22%3A%7B%7D%2C%22p1%22%3A%7B%22rain%22%3A1%7D%7D%2C%22width%22%3A8%2C%22height%22%3A8%2C%22terrain%22%3A%22terrest%22%2C%22elements%22%3A%7B%7D%7D%2C%22p2%22%3A%7B%22name%22%3A%22Pyro%22%7D%2C%22p1%22%3A%7B%22name%22%3A%22donbonifacio%22%7D%2C%22actions%22%3A%5B%5B%22deploy%22%2C1%2C%22rain%22%2C%5B8%2C8%5D%5D%5D%2C%22p2-focused-board%22%3Afalse%2C%22action-focus%22%3A%22p1%22%7D"))]
     (is (= 200 (response :status)))))
