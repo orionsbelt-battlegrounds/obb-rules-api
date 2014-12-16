@@ -42,3 +42,6 @@
     (is (= "ActionFailed" (get-in result [:message])))
     (is (= :deploy (get-in result [:board :state])))))
 
+#_(deftest test-p2-deploy
+  (let [response (app (request :get "/game/turn/p1?context=%7B%22p2-focused-board%…y%22%3A%7B%22username%22%3A%22Pyro%22%2C%22player-code%22%3A%22p2%22%7D%7D"))]
+    (is (= 200 (response :status)))))

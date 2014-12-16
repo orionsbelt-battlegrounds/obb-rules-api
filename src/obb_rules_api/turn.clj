@@ -26,12 +26,20 @@
     (data :board)
     (data :battle)))
 
+(defn- translate
+  "Translates the board if needed"
+  [board viewed-by]
+  (if (= "p2" viewed-by)
+    (translator/board :p2 board)
+    board))
+
 (defn handler
   "Processes given actions to a game"
   [raw]
   (let [player (parser/build-player raw)
         data (parser/build-data raw)
-        battle (fetch-board data)
+        viewed-by (or (get-in data [:viewed-by :player-code]) "p1")
+        battle (-> (fetch-board data) (translate viewed-by))
         action-focus (or (data :action-focus) :p1)
         actions (resolve-focus action-focus (data :actions))
         result (-> (apply turn/process battle player actions)
