@@ -83,6 +83,7 @@ name | default | description
 --- | --- | --- | ---
 **game** | - | the current board
 **actions** | - | the list of actions to process on this turn
+**viewed-by** | p1 | the given board is viewed from this player
 **action-focus** | p1 | the received actions were performed with this focus (p1 or p2)
 **p2-focused-board** | false | if the server should also return a view of the board from p2
 
