@@ -6,7 +6,7 @@ ADD ./target/obb-rules-api.jar /opt/obb-rules-api/obb-rules-api.jar
 
 WORKDIR /opt/obb-rules-api
 
-EXPOSE 3000
+EXPOSE 5000
 ENV APP_ENV production
 
 ENTRYPOINT java -jar obb-rules-api.jar
