@@ -10,7 +10,7 @@
   :scm {:name "git"
         :url "git@github.com:orionsbelt-battlegrounds/obb-rules-api.git"}
 
-  :min-lein-version "2.0.0"
+  :min-lein-version "2.5.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [clj-time "0.8.0"]
                  [org.clojure/data.json "0.2.5"]
@@ -23,11 +23,12 @@
 
   :plugins [[environ/environ.lein "0.2.1"]
             [lein-ring "0.8.12"]]
-  :main obb-rules-api.routes/-main
+  :main obb-rules-api.routes
   :ring {:handler obb-rules-api.routes/app}
   :hooks [environ.leiningen.hooks]
-  :uberjar-name "obb-api-rules-standalone.jar"
+  :uberjar-name "obb-rules-api.jar"
   :profiles {:dev {:dependencies [[ring-mock "0.1.5"]]
                    :plugins [[com.jakemccrary/lein-test-refresh "0.5.2"]
                              [lein-cloverage "1.0.2"]]}
-             :production {:env {:production true}}})
+             :production {:env {:production true}}
+             :uberjar {:aot :all}})

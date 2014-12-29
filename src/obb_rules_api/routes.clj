@@ -1,5 +1,6 @@
 (ns obb-rules-api.routes
   (:use compojure.core)
+  (:gen-class)
   (:require [compojure.handler :as handler]
             [obb-rules-api.index :as index]
             [obb-rules-api.focus :as focus]
@@ -49,7 +50,7 @@
   (cors/wrap-cors handler :access-control-allow-origin [#"^http://(.+\.)?orionsbelt.eu(.*)"
                                                         #"^http://localhost(.*)"
                                                         #"^http://orionsbelt-battlegrounds.github.io(.*)"]
-                          :access-control-allow-methods [:get :put :post :delete]))
+                  :access-control-allow-methods [:get :put :post :delete]))
 
 (def app
   (->
@@ -57,6 +58,6 @@
     (setup-cors)
     (wrap-exception-handler)))
 
-(defn -main []
+(defn -main [& args]
   (let [port (Integer/parseInt (get (System/getenv) "PORT" "5000"))]
     (jetty/run-jetty app {:port port})))
