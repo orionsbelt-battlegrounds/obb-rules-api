@@ -41,7 +41,7 @@
     (try
       (handler req)
       (catch Exception e
-        #_(clojure.stacktrace/print-stack-trace e 10)
+        (clojure.stacktrace/print-stack-trace e 10)
         (reply/exception e)))))
 
 (defn setup-cors

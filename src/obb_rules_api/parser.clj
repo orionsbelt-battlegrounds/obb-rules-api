@@ -17,7 +17,7 @@
   "Removes unnecessary data from the game's dump"
   [key value]
   (cond
-    (= :unit key) (unit/unit-name value)
+    (= :unit key) (if (string? value) value (unit/unit-name value))
     (= :action-results key) (clean-up-action-results value)
     :else value))
 
