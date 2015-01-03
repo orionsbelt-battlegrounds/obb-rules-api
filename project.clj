@@ -12,10 +12,10 @@
 
   :min-lein-version "2.5.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [clj-time "0.8.0"]
+                 [clj-time "0.9.0"]
                  [org.clojure/data.json "0.2.5"]
                  [ring/ring-jetty-adapter "1.3.2"]
-                 [ring-cors "0.1.4"]
+                 [ring-cors "0.1.6"]
                  [environ "1.0.0"]
                  [obb-rules "1.9"]
                  [obb-ranking "1.0.0"]
