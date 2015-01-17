@@ -17,7 +17,7 @@
                  [ring/ring-jetty-adapter "1.3.2"]
                  [ring-cors "0.1.6"]
                  [environ "1.0.0"]
-                 [obb-rules "1.9"]
+                 [obb-rules "1.10"]
                  [obb-ranking "1.0.0"]
                  [compojure "1.3.1"]]
 
