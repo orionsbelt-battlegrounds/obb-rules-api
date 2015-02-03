@@ -5,7 +5,7 @@
   :source-paths ["src"]
   :test-paths ["test"]
 
-  ;:java-agents [[com.newrelic.agent.java/newrelic-agent "3.12.0"]]
+  :java-agents [[com.newrelic.agent.java/newrelic-agent "3.12.0"]]
 
   :scm {:name "git"
         :url "git@github.com:orionsbelt-battlegrounds/obb-rules-api.git"}
